@@ -1,0 +1,29 @@
+ja:
+  ja:
+  activerecord:
+    models:
+      recipe: レシピ
+      user: ユーザー
+      favorite: お気に入り
+      taste: 味
+    attributes:
+      recipe:
+        title: タイトル
+        describe: 記述
+        image: 画像
+      user:
+        name: 名前
+        profile: プロフィール
+        profile_image: プロフィールの画像
+        email: メールアドレス
+        current_password: 現在のパスワード
+        password: パスワード
+        password_confirmation: 確認用パスワード
+        remember_me: ログインを記憶
+        Log in: ログイン
+        sign up: サインアップ
+        admin: 管理者
+      taste:
+        name: 特色
+      comment:
+        content: 内容
