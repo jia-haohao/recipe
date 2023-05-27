@@ -26,7 +26,7 @@ html {
   height: 70px;
   width: 100%;
   font-family: Georgia;
-  background-color: aquamarine;
+  background-color: rgb(127, 232, 255);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -38,6 +38,19 @@ html {
 
 h1 {
   text-align: center;
+}
+
+.profile_image {
+  border-radius: 50%;
+}
+
+.main-image {
+  height: 940px;
+  background-image: url(mean.jpg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  // background-size: cover;
+  // background-position: center;
 }
 
 .footer {
