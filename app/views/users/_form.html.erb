@@ -1,0 +1,44 @@
+<%= form_with(model: @user, local: true) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @user.errors.count %>件のエラーがあります. </h2>
+      <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <section class="section">
+    <div class="container">
+       <div class="columns is-centered">
+          <div class="column is-6">
+            <div class="field">
+              <%= f.label :name, "ユーザー名", class: "label" %>
+              <%= f.text_field :name, class: "input" %>
+            </div>
+
+            <div class="field">
+              <%= f.label :email, "メールアドレス", class: "label" %>
+              <%= f.email_field :email, class: "input" %>
+            </div>
+
+            <div class="field">
+              <%= f.label :profile, "プロフィール", class: "label" %>
+              <%= f.text_area :profile, class: "textarea" %>
+            </div>
+
+            <div class="field">
+              <%= image_tag(@user.profile_image.url, class: "profile_image") if  @user.profile_image.url %>
+                <%= f.label :profile_image, "プロフィール画像", class: "label" %>
+                <%= f.file_field :profile_image, class: "current-profile-image" %>
+                <%# <%= f.hidden_field :image_cache %>
+            </div>
+
+            <%= f.submit "更新", class: "button is-success" %>
+         </div>
+      </div>
+    </div>
+  </section>
+<% end %>

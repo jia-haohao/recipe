@@ -1,0 +1,41 @@
+<%# <%= form_with(model: @cook, local: true) do |f| %> 
+  <% if @cook.errors.any? %>
+    <div class="notification is-danger">
+      <h2><%= pluralize(@cook.errors.count, "error") %> prohibited this object from being saved: not successfully</h2>
+      <ul>
+        <% @cook.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <section class="section">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-6">
+         <%= form_for @cook do |f| %>
+          <div class="field">
+            <%= f.label :title, "レシピ名", class: "label" %>
+            <%= f.text_field :title, class: "input" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :describe, "作り方", class: "label" %>
+            <%= f.text_area :describe, class: "textarea" %>
+          </div>
+
+          <div class="field">
+            <%= image_tag(@cook.image.url) if @cook.image.url %>
+            <%= f.label :image, "写真", class: "label" %>
+            <%= f.file_field :image, class: "current-image" %>
+            <%= f.hidden_field :image_cache %>
+          </div>
+
+          <%= f.submit class: "button is-success" %>
+         <% end %>
+        </div>
+      </div>
+    </div>
+  </section>
+<%# <% end %> 
