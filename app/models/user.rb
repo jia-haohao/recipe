@@ -6,13 +6,6 @@ class User < ApplicationRecord
   :recoverable, :rememberable, :validatable
 
   mount_uploader :profile_image, ProfileImageUploader
-  # has_one_attached :profile_image
-
-  # def get_profile_image
-  #   if profile_image.attached?
-  #     profile_image
-  #   else
-  #     'no_image.png'
-  #   end
-  # end
+  
+  has_many :cooks, dependent: :destroy
 end
