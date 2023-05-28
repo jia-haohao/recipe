@@ -42,7 +42,7 @@ https://cacoo.com/diagrams/AMb8LP16jdS0KAqx/F0089
 
 ## ER 図
 
-![ER図](/recipe.jpg)
+![ER図](/cook.jpg)
 
 ## 画面遷移図
 
