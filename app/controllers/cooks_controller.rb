@@ -1,8 +1,9 @@
 class CooksController < ApplicationController
   before_action :set_cook, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:new, :create]
   def index
-    @cooks = Cook.all
+    @q = Cook.ransack(params[:q])
+    @cooks = @q.result(distinct: true).includes(:user)
   end
 
   def new
