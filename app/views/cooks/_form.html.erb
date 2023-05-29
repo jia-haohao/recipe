@@ -1,4 +1,4 @@
-<%# <%= form_with(model: @cook, local: true) do |f| %> 
+<%= form_with(model: @cook, local: true) do |f| %>
   <% if @cook.errors.any? %>
     <div class="notification is-danger">
       <h2><%= pluralize(@cook.errors.count, "error") %> prohibited this object from being saved: not successfully</h2>
@@ -14,10 +14,17 @@
     <div class="container">
       <div class="columns is-centered">
         <div class="column is-6">
-         <%= form_for @cook do |f| %>
           <div class="field">
             <%= f.label :title, "レシピ名", class: "label" %>
             <%= f.text_field :title, class: "input" %>
+          </div>
+
+          <div class="label_field">
+            <%= f.label :name, "特色", class: "label" %>
+            <%= f.collection_check_boxes(:label_ids, Label.all, :id, :name) do |cd| %>
+              <p><%= cd.label { cd.check_box + cd.text } %></p>
+            <% end %>
+            <%= link_to "特色を作成", new_label_path, class: "button is-light" %>
           </div>
 
           <div class="field">
@@ -26,16 +33,15 @@
           </div>
 
           <div class="field">
-            <%= image_tag(@cook.image.url) if @cook.image.url %>
+            <%= image_tag(@cook.image.url, style: "width: 300px; height: 300px;") if @cook.image.url %>
             <%= f.label :image, "写真", class: "label" %>
             <%= f.file_field :image, class: "current-image" %>
             <%= f.hidden_field :image_cache %>
           </div>
 
           <%= f.submit class: "button is-success" %>
-         <% end %>
         </div>
       </div>
     </div>
   </section>
-<%# <% end %> 
+<% end %>

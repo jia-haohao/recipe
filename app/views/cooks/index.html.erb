@@ -3,6 +3,7 @@
 <div class="container">
   <%= search_form_for @q do |f| %>
     <%= f.search_field :title_cont, style: "width: 200px; height: 30px;", placeholder: "レシピ名検索" %>
+    <%= f.search_field :labels_name_cont, style: "width: 200px; height: 30px;", placeholder: "特色検索" %>
     <%= f.submit "検索", class: "button is-light is-small" %>
   <% end %>
 </div>
@@ -34,6 +35,11 @@
               </div>
               <div class="content">
                 <%= cook.title %>
+              </div>
+              <div class="content">
+                <% cook.labels.each do |label| %>
+                  <%= label.name %>
+                <% end %>
               </div>
               <div class="content">
                 <time><%= cook.updated_at.strftime("%Y-%m-%d %H:%M") %></time>更新

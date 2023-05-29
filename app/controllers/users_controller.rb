@@ -19,7 +19,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    # @user = User.find(params[:id])
+    @cooks = @user.cooks.all
   end
 
   def edit

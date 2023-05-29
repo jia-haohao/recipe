@@ -57,6 +57,12 @@
             <div class="card-content">
               <div class="media">
                 <div class="media-content">
+                  <p class="title is-6"><%= cook.title %></p>
+                  <div class="content">
+                    <% cook.labels.each do |label| %>
+                      <%= label.name %>
+                    <% end %>
+                  </div>
                   <%= link_to cook_path(cook), class: "panel-block" do %>
                     <span class="panel-icon">
                       <i class="fas fa-book" aria-hidden="true"></i>

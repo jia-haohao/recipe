@@ -19,7 +19,7 @@
             <div class="content">
               <table class="table is-narrow">
                 <tr>
-                  <th>レシピ</th>
+                  <th></th>
                 </tr>
                 <tr>
                   <td><%= simple_format @cook.describe %></td>
@@ -42,6 +42,11 @@
             <p class="control">
               <%= @cook.user.profile %>
             </p>
+          </div>
+          <div class="label_field">
+            <% @labels.each do |label| %>
+              <p><%= label %></p>
+            <% end %>
           </div>
           <%= link_to user_path(@cook.user), class: "panel-block" do %>
             <span class="panel-icon">

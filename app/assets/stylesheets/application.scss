@@ -20,6 +20,7 @@ html {
   font-size: 20px;
   min-height: 100%;
   position: relative;
+  // background-color: bisque;
 }
 
 .header {
@@ -32,8 +33,21 @@ html {
   justify-content: space-between;
 }
 
+.media {
+  margin: 0px;
+}
 .content {
-  margin-bottom: 0px;
+  margin-bottom: 0;
+}
+
+.label_field {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.label_field p {
+  margin-right: 10px;
+  font-size: 15px;
 }
 
 .nav-link:not(:last-child) {
