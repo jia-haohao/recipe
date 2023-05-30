@@ -10,6 +10,7 @@ class LabelsController < ApplicationController
 
   # GET /labels/1 or /labels/1.json
   def show
+    @cook = Cook.find(session[:cook_id])
   end
 
   # GET /labels/new

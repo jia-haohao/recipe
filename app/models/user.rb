@@ -8,4 +8,5 @@ class User < ApplicationRecord
   mount_uploader :profile_image, ProfileImageUploader
   
   has_many :cooks, dependent: :destroy
+  has_many :comments, dependent: :destroy
 end

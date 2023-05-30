@@ -36,24 +36,36 @@
       <div class="column is-4">
         <article class="panel is-link">
           <p class="panel-heading">
-            <%= @cook.user.name %>
+            <%= link_to user_path(@cook.user), class: "panel-block" do %>
+              <span class="panel-icon">
+                <i class="fas fa-user" aria-hidden="true"></i>
+              </span>
+              <%= @cook.user.name %> さんのページへ
+            <% end %>
           </p>
           <div class="panel-block">
             <p class="control">
               <%= @cook.user.profile %>
             </p>
           </div>
-          <div class="label_field">
-            <% @labels.each do |label| %>
-              <p><%= label %></p>
-            <% end %>
+          <div class="panel-block">
+            <div class="label_field">
+              <% @labels.each do |label| %>
+                <p><%= label %></p>
+              <% end %>
+            </div>
           </div>
-          <%= link_to user_path(@cook.user), class: "panel-block" do %>
-            <span class="panel-icon">
-              <i class="fas fa-user" aria-hidden="true"></i>
-            </span>
-            <%= @cook.user.name %> さんのページへ
-          <% end %>
+          <p class="center">コメント一覧</p>
+          <div class="panel-block">
+            <div id="comments_area">
+              <%= render partial: 'comments/index', locals: { comments: @comments, cook: @cook } %>
+            </div>
+          </div>
+            <div class="panel-block">
+              <%= render partial: 'comments/form', locals: { comment: @comment, cook: @cook } %>
+            </div>
+          </div>
+          
         </article>
       </div>
     </div>

@@ -1,6 +1,6 @@
 class CooksController < ApplicationController
   before_action :set_cook, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:new, :create]
+  before_action :authenticate_user!
   def index
     @q = Cook.ransack(params[:q])
     @cooks = @q.result(distinct: true).includes(:labels)
@@ -21,10 +21,13 @@ class CooksController < ApplicationController
 
   def show 
     @labels = @cook.labels.pluck(:name)
+    @comments = @cook.comments
+    @comment = @cook.comments.build
   end
 
   def edit
-    @labels =@cook.labels.all
+    session[:cook_id] = params[:id]
+    @labels = @cook.labels.all
     if @cook.user != current_user
       redirect_to cooks_path, alert: "不正なアクセスです。"
     end
