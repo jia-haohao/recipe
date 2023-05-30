@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:new]
   def index
     @users = User.all
   end
@@ -19,7 +19,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    # @user = User.find(params[:id])
+    @cooks = @user.cooks.all
   end
 
   def edit
