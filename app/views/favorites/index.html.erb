@@ -1,0 +1,58 @@
+<br>
+<h1 class="title">お気に入り一覧</h1>
+<section class="section">
+  <div class="container">
+    <div class="columns is-multiline">
+      <% @favorites.each do |favorite| %>
+        <div class="column is-4">
+          <div class="card">
+            <div class="card-image">
+              <figure class="image is-4by3">
+                <%= link_to cook_path(favorite.cook) do %>
+                  <%= image_tag favorite.cook.image.url if favorite.cook.image.url %>
+                <% end %>
+              </figure>
+            </div>
+            <div  class="card-content">
+              <div class="media">
+                <div class="media-left">
+                  <figure class="media-left">
+                    <%= link_to user_path(favorite.cook.user) do %>
+                      <%= image_tag(favorite.cook.user.profile_image.url, class: "profile_image") if favorite.cook.user.profile_image.url %>
+                    <% end %>
+                  </figure>
+                </div>
+                <div class="media-content">
+                  <div class="title"><%= link_to favorite.cook.user.name, user_path(favorite.cook.user) %></div>
+                </div>
+              </div>
+              <div class="media-content">
+                <%= favorite.cook.title %>
+                <% if current_user.already_favorited?(favorite.cook) %>
+                  <%= link_to cook_favorites_path(favorite.cook), method: :delete do %>
+                    <i class="fas fa-heart"></i>
+                  <% end %>
+                  <%= favorite.cook.favorites.count %>
+                <% else %>
+                  <%= link_to cook_favorites_path(favorite.cook), method: :post do %>
+                    <i class="far fa-heart"></i>
+                  <% end %>
+                  <%= favorite.cook.favorites.count %>
+                <% end %>
+              </div>
+              <div>
+                <% favorite.cook.labels.each do |label| %>
+                  <%= label.name %>
+                <% end %>
+              </div>
+              <div class="content">
+                <time><%= favorite.cook.updated_at.strftime("%Y-%m-%d %H:%M") %></time>更新
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
+<div class="center"><%= link_to "戻る", user_path(current_user.id), class: "button is-info" %></div>

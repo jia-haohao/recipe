@@ -15,6 +15,19 @@
               <div class="media-content">
                 <p class="title is-4"><%= @cook.title %></p>
               </div>
+              <div class="media-right">
+                <% if current_user.already_favorited?(@cook) %>
+                  <%= link_to cook_favorites_path(@cook), method: :delete do %>
+                    <i class="fas fa-heart"></i>
+                  <% end %>
+                  <%= @cook.favorites.count %>
+                <% else %>
+                  <%= link_to cook_favorites_path(@cook), method: :post do %>
+                    <i class="far fa-heart"></i>
+                  <% end %>
+                  <%= @cook.favorites.count %>
+                <% end %>
+              </div>
             </div>
             <div class="content">
               <table class="table is-narrow">
@@ -26,7 +39,9 @@
                 </tr>
               </table>
               <% if @cook.user.id == current_user.id %>
-                <%= link_to "編集画面へ", edit_cook_path(@cook), class: "button is-success" %>
+                <%= link_to "編集", edit_cook_path(@cook), class: "button is-success" %>
+                <%= link_to "削除", cook_path(@cook), method: :delete,
+                    data: { confirm: "本当に削除していいですか" }, class: "button is-danger" %>
               <% end %>
             </div>
           </div>

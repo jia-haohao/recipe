@@ -20,7 +20,10 @@ html {
   font-size: 20px;
   min-height: 100%;
   position: relative;
-  // background-color: bisque;
+}
+
+body {
+  padding-bottom: 60px;
 }
 
 .header {
@@ -33,11 +36,8 @@ html {
   justify-content: space-between;
 }
 
-.media {
-  margin: 0px;
-}
-.content {
-  margin-bottom: 0;
+.media-content p {
+  margin-right: 10px;
 }
 
 .center {
@@ -68,6 +68,8 @@ h1 {
 
 .profile_image {
   border-radius: 50%;
+  width: 100px;
+  height: 100px;
 }
 
 .main-image {

@@ -33,10 +33,21 @@
                   <div class="title"><%= link_to cook.user.name, user_path(cook.user) %></div>
                 </div>
               </div>
-              <div class="content">
+              <div class="media-content">
                 <%= cook.title %>
+                <% if current_user.already_favorited?(cook) %>
+                  <%= link_to cook_favorites_path(cook), method: :delete do %>
+                    <i class="fas fa-heart"></i>
+                  <% end %>
+                  <%= cook.favorites.count %>
+                <% else %>
+                  <%= link_to cook_favorites_path(cook), method: :post do %>
+                    <i class="far fa-heart"></i>
+                  <% end %>
+                  <%= cook.favorites.count %>
+                <% end %>
               </div>
-              <div class="content">
+              <div>
                 <% cook.labels.each do |label| %>
                   <%= label.name %>
                 <% end %>
