@@ -25,6 +25,7 @@
                   </figure></td>
                   <td class="title"><%= link_to following.name, user_path(following.id) %></td>
                   <td><%= link_to 'フォロー外す', relationship_path(following.id), method: :delete, class: "button is-danger is-small" %></td>
+                  <td><%= link_to 'メッセージ', conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: :post, class: "button is-success is-small" %></td>
                 </tr>
               <% end %>
             </tbody>
@@ -41,6 +42,8 @@
                 <tr>
                   <th>画像</th>
                   <th>フォロワー名</th>
+                  <th></th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>
@@ -50,6 +53,7 @@
                       <%= image_tag(follower.profile_image.url, class: "profile_image is-rounded") if  follower.profile_image.url  %>
                     </figure></td>
                     <td class="title"><%= link_to follower.name, user_path(follower.id) %></td>
+                    <td><%= link_to 'メッセージ', conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: :post, class: "button is-success is-small" %></td>
                   </tr>
                 <% end %>
               </tbody>  
