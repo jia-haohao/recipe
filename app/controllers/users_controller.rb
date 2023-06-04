@@ -39,6 +39,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    # params[:id].followed
     @user.destroy
     redirect_to users_path, notice: "削除しました!"
   end
@@ -46,6 +47,7 @@ class UsersController < ApplicationController
   def page 
     @followings = current_user.followings
     @followers = current_user.followers
+    # params[:id] = params[:id].followed
   end
 
   private
