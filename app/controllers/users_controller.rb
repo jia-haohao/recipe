@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :page]
   before_action :authenticate_user!, except: [:new]
   def index
     @users = User.all
@@ -20,6 +20,8 @@ class UsersController < ApplicationController
 
   def show
     @cooks = @user.cooks.all
+    @followings = @user.followings
+    @followers = @user.followers
   end
 
   def edit
@@ -37,8 +39,15 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    # params[:id].followed
     @user.destroy
     redirect_to users_path, notice: "削除しました!"
+  end
+
+  def page 
+    @followings = current_user.followings
+    @followers = current_user.followers
+    # params[:id] = params[:id].followed
   end
 
   private
@@ -48,6 +57,6 @@ class UsersController < ApplicationController
   end 
 
   def user_params
-    params.require(:user).permit(:name, :email, :profile, :profile_image)
+    params.require(:user).permit(:name, :email, :profile, :profile_image, :image_cache)
   end
 end

@@ -1,5 +1,15 @@
 <br>
 <h1 class="title">マイページ</h1>
+<p class="center">
+  <%= link_to page_user_path(@user), class: "button is-primary is-small" do %>
+    フォロー　<%= @user.followings.count %>
+  <% end %>
+
+  <%= link_to page_user_path(@user), class: "button is-success is-small" do %>
+    フォロワー　<%= @user.followers.count %>
+  <% end %>
+</p>
+
 
 <section class="section">
   <div class="container">
@@ -7,7 +17,7 @@
       <div class="column is-8">
         <div class="columns is-centered">
           <div class="column is-4">
-            <figure class="image is-128x128"  style="margin-left: auto; margin-right: auto;">
+            <figure class="image is-200x200"  style="margin-left: auto; margin-right: auto;">
               <%= image_tag(@user.profile_image.url, class: "profile_image is-rounded") if  @user.profile_image.url  %>
             </figure>
           </div>
@@ -16,6 +26,9 @@
               <tr>
                 <td class="is-size-4">
                   <strong><%= @user.name %></strong>
+                </td>
+                <td>
+                  <%= render 'follow_form', user: @user %>
                 </td>
                 <% if @user.id == current_user.id %>
                   <td class="is-size-4">

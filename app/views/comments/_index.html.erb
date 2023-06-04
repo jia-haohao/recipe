@@ -6,15 +6,17 @@
         <p><%= comment.content %></p>
         <div class="align-right">
           <%= comment.user.name %>さん
-          <%= link_to edit_cook_comment_path(cook, comment), remote: true do %>
-            <span>
-              <i class="fas fa-edit"></i>
-            </span>
-          <% end %>
-          <%= link_to cook_comment_path(comment.cook_id, comment.id), method: :delete, remote: true, data: { confirm: "本当に削除しますか?"} do %>
-            <span>
-              <i class="fas fa-trash"></i>
-            <span>
+          <% if comment.user_id == current_user.id %>
+            <%= link_to edit_cook_comment_path(cook, comment), remote: true do %>
+              <span>
+                <i class="fas fa-edit"></i>
+              </span>
+            <% end %>
+            <%= link_to cook_comment_path(comment.cook_id, comment.id), method: :delete, remote: true, data: { confirm: "本当に削除しますか?"} do %>
+              <span>
+                <i class="fas fa-trash"></i>
+              <span>
+            <% end %>
           <% end %>
         </div>
       </li>

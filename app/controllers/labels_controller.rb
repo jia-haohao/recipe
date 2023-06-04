@@ -3,9 +3,8 @@ class LabelsController < ApplicationController
 
   # GET /labels or /labels.json
   def index
-  #  @q = Label.ransack(params[:q])
-  #  @labels = @q.resule(distinct: true).includes(:cooks)
-  @labels = Label.all
+    @labels = Label.all
+    @cook = Cook.find(session[:cook_id])
   end
 
   # GET /labels/1 or /labels/1.json
@@ -68,6 +67,6 @@ class LabelsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def label_params
-      params.require(:label).permit(:name)
+      params.require(:label).permit(:name, :cook_id, { label_ids: [] })
     end
 end

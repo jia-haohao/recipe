@@ -24,7 +24,7 @@
             <%= f.collection_check_boxes(:label_ids, Label.all, :id, :name) do |cd| %>
               <p><%= cd.label { cd.check_box + cd.text } %></p>
             <% end %>
-            <%= link_to "特色を作成", new_label_path, class: "button is-light" %>
+            <%= link_to "特色を作成", new_label_path, class: "button is-light is-small" %>
           </div>
 
           <div class="field">

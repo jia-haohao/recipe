@@ -11,6 +11,8 @@ class Cook < ApplicationRecord
   has_many :labellings, dependent: :destroy 
   has_many :labels, through: :labellings
   has_many :comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_many :favorite_users, through: :favorites, source: :user
 
   def self.ransackable_attributes(auth_object = nil)
     ["created_at", "describe", "id", "image", "title", "updated_at", "label_id"]

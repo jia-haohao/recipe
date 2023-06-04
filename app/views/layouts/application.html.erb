@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" integrity="sha256-UzFD2WYH2U1dQpKDjjZK72VtPeWP50NoJjd26rnAdUI=" crossorigin="anonymous" />
     <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track": "reload" %>
     <%= javascript_pack_tag "application", "data-turbolinks-track": "reload" %>
+    <script src="https://kit.fontawesome.com/484e6509e8.js" crossorigin="anonymous"></script>
   </head>
 
   <body>
@@ -17,18 +18,19 @@
           <%=link_to root_path, class: "navar-item" do %>
             recipegram
           <% end %>
-        </h2>
+        </h2>   
       </div>
 
       <div class="navbar-end">
       <% if user_signed_in? %>
         <%= link_to "レシピ一覧", cooks_path, class: "nav-link" %>
         <%= link_to "レシピ投稿", new_cook_path, class: "nav-link" %>
-        <%= link_to "レシピグラマー一覧", users_path, class: "nav-link" %>
+        <%= link_to "お気に入り一覧", favorites_index_path, class: "nav-link" %>
+        <%= link_to "ユーザー一覧", users_path, class: "nav-link" %>
         <%= link_to "マイページ", user_path(current_user), class: "nav-link" %>
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %>
       <% else %>
-        <%= link_to "レシピグラマー一覧", users_path, class: "nav-link" %>
+        <%= link_to "ユーザー一覧", users_path, class: "nav-link" %>
         <%= link_to "ログイン", new_user_session_path, class: "nav-link" %>
         <%= link_to "新規登録", new_user_registration_path, class: "nav-link" %>
       <% end %>
