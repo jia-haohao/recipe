@@ -45,9 +45,8 @@ class UsersController < ApplicationController
   end
 
   def page 
-    @followings = current_user.followings
-    @followers = current_user.followers
-    # params[:id] = params[:id].followed
+    @followings = @user.followings
+    @followers = @user.followers
   end
 
   private
