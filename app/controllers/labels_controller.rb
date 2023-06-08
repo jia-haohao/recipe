@@ -9,7 +9,7 @@ class LabelsController < ApplicationController
 
   # GET /labels/1 or /labels/1.json
   def show
-    @cook = Cook.find(session[:cook_id])
+    # @cook = Cook.find(session[:cook_id])
   end
 
   # GET /labels/new
@@ -67,6 +67,6 @@ class LabelsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def label_params
-      params.require(:label).permit(:name, :cook_id, { label_ids: [] })
+      params.require(:label).permit(:name)
     end
 end

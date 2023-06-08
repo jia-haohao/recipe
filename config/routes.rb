@@ -4,14 +4,17 @@ Rails.application.routes.draw do
   resources :users do
     get :page, on: :member
   end
-  resources :relationships, only: [:create, :destroy] 
-    
   
   resources :cooks do 
     resources :comments
-    resource :favorites, only: [:create, :destroy, :index]
+    resource :favorites, only: [:create, :destroy]
   end
   get 'favorites/index'
+
+  resources :relationships, only: [:create, :destroy] 
+  resources :conversations do 
+    resources :messages 
+  end
   resources :labels
   
   if Rails.env.development?

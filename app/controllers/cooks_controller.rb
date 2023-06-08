@@ -7,6 +7,7 @@ class CooksController < ApplicationController
   end
 
   def new
+    session[:cook_id] = nil
     @cook = Cook.new
   end
 

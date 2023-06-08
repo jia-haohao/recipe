@@ -30,7 +30,7 @@ body {
   height: 70px;
   width: 100%;
   font-family: Georgia;
-  background-color: rgb(127, 232, 255);
+  background-color: cornflowerblue;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -49,7 +49,7 @@ body {
   text-align: center;
 }
 
-.align-right {
+.text-align {
   text-align: right;
 }
 
@@ -83,11 +83,11 @@ h1.title {
 }
 
 .main-image {
-  height: 940px;
+  height: 500px;
   background-image: url(mean.jpg);
   background-repeat: no-repeat;
-  background-size: contain;
-  // background-size: cover;
+  // background-size: contain;
+  background-size: cover;
   // background-position: center;
 }
 

@@ -45,9 +45,8 @@ class UsersController < ApplicationController
   end
 
   def page 
-    @followings = current_user.followings
-    @followers = current_user.followers
-    # params[:id] = params[:id].followed
+    @followings = @user.followings
+    @followers = @user.followers
   end
 
   private
@@ -57,6 +56,6 @@ class UsersController < ApplicationController
   end 
 
   def user_params
-    params.require(:user).permit(:name, :email, :profile, :profile_image, :image_cache)
+    params.require(:user).permit(:name, :email, :profile, :profile_image)
   end
 end
