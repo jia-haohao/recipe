@@ -3,42 +3,69 @@
   <%= link_to '以前のメッセージ', '?m=all' %>
 <% end %>
 
-<div class="center">
+<table class="container">
+  <thead>
+    <tr>
+      <% if @conversation.recipient_id == current_user.id %>
+        <th style="text-align: left; font-size: 50px;"><%= @conversation.recipient.name %></th>
+      <% else %>
+        <th style="text-align: left; font-size: 50px;"><%= current_user.name %></th>
+      <% end %>
+      
+      <% if @conversation.recipient_id != @conversation.sender_id %>
+        <% if @conversation.sender_id == current_user.id %>
+          <th style="text-align: right; font-size: 50px;"><%= @conversation.sender.name %></th>
+        <% else %>
+          <th style="text-align: right; font-size: 50px;"><%= @conversation.recipient.name %></th>
+        <% end %>
+      <% end %>
+    </tr>
+  </thead>
   <% @messages.each do |message| %>
     <% if message.body.present? %>
-      <div class="item">
-        <div class="content">
-          <div><strong><%= message.user.name %></strong> <%= message.message_time %></div>
-          <div class="list">
-            <div class="item">
-              <i class="right triangle icon"></i>
-              <%= message.body %> /
-              <% if message.user == current_user %>
-                <%= message.read ? '既読' : '未読' %>
-              <% end %>
-            </div>
-          </div>
-        </div>
-      </div>
+      <% if message.user_id == current_user.id %>
+        <tbody>
+          <tr>
+            <th>
+              <p style="text-align: left;"><%= message.body %></p>
+              <p style="text-align: left;"><%= message.message_time %>　<%= message.read ? '既読' : '未読' %></p>
+            </th>
+            <th></th>
+          </tr>
+      <% else %>
+          <tr>
+            <th></th>
+            <th>
+              <p style="text-align: right;"><%= message.body %></p>
+              <p style="text-align: right;"><%= message.message_time %>　<%= message.read ? '既読' : '未読' %></p>
+            </th>
+          </tr>
+        </tbody>
+      <% end %>
     <% end %>
   <% end %>
-</div>
+</table>
 
 <%= form_with(model: [@conversation, @message]) do |f| %>
-  <div class="center">
-    <%= f.text_area :body, class: "form-control" %>
-    <% if @message.errors.any? %>
-      <div class="text-danger">
+  <% if @message.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@message.errors.count, "error") %> prohibited this comment from being saved:</h2>
+      <ul>
         <% @message.errors.full_messages.each do |message| %>
-          <%= message %>
+          <li><%= message %></li>
         <% end %>
-      </div>
-    <% end %>
-  </div>
-  <%= f.text_field :user_id, value: current_user.id, type: "hidden" %>
-  <div class="center">
-    <%= f.submit "メッセージを送る" %>
-    <br>
-    <%= link_to '戻る', user_path(current_user), class: 'button is-secondary is-small' %>
-  </div>
+      </ul>
+    </div>
+  <% end %>
+
+    <div class="center">
+      <%= f.text_area :body, class: "form-control" %>
+    </div>
+    <%= f.text_field :user_id, value: current_user.id, type: "hidden" %>
+    <div class="center">
+      <%= f.submit "メッセージを送る" %>
+      <br>
+      <%= link_to '戻る', user_path(current_user), class: 'button is-secondary is-small' %>
+      <%#= link_to '情報へ', page_user_path(@user), class: 'button is-secondary is-small' %>
+    </div>
 <% end %>

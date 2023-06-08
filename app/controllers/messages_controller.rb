@@ -5,7 +5,7 @@ class MessagesController < ApplicationController
 
   def index 
     @messages = @conversation.messages 
-    
+    # binding.pry
     if @messages.length > 10
       @over_ten = true 
       @messages = Message.where(id: @messages[-10..-1].pluck(:id))
@@ -36,6 +36,6 @@ class MessagesController < ApplicationController
   private 
 
   def message_params
-    params.require(:message).permit(:body, :user_id)
+    params.require(:message).permit(:body, :user_id).merge(user_id: current_user.id)
   end
 end
