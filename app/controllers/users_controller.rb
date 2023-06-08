@@ -47,6 +47,7 @@ class UsersController < ApplicationController
   def page 
     @followings = @user.followings
     @followers = @user.followers
+    # @conversation = Conversation.all
   end
 
   private

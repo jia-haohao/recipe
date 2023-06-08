@@ -2,12 +2,12 @@ ja:
   ja:
   activerecord:
     models:
-      recipe: レシピ
+      cook: レシピ
       user: ユーザー
       favorite: お気に入り
-      taste: 味
+      label: 特色
     attributes:
-      recipe:
+      cook:
         title: タイトル
         describe: 記述
         image: 画像
@@ -23,7 +23,7 @@ ja:
         Log in: ログイン
         sign up: サインアップ
         admin: 管理者
-      taste:
+      label:
         name: 特色
       comment:
         content: 内容
