@@ -9,6 +9,7 @@
 
 - devise
 - rails_admin
+- gem 'cancancan'
 - Ajax を使ったコメント機能
 - お気に入り機能
 

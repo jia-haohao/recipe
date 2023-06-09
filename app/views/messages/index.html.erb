@@ -62,6 +62,6 @@
       <%= f.submit "メッセージを送る" %>
       <br>
       <%= link_to '戻る', user_path(current_user), class: 'button is-secondary is-small' %>
-      <%#= link_to '情報へ', page_user_path(@conversation), class: 'button is-secondary is-small' %>
+      <%= link_to '情報へ', page_user_path(current_user), class: 'button is-secondary is-small' %>
     </div>
 <% end %>

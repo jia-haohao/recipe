@@ -4,7 +4,7 @@ class LabelsController < ApplicationController
   # GET /labels or /labels.json
   def index
     @labels = Label.all
-    @cook = Cook.find(session[:cook_id])
+    # @cook = Cook.find(session[:cook_id])
   end
 
   # GET /labels/1 or /labels/1.json

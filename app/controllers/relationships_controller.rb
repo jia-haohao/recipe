@@ -1,4 +1,5 @@
 class RelationshipsController < ApplicationController
+  load_and_authorize_resource
   def create
     @user = User.find(relationship_params[:followed_id])
     current_user.follow!(@user)

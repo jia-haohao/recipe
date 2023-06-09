@@ -1,9 +1,10 @@
 class CooksController < ApplicationController
+  load_and_authorize_resource
   before_action :set_cook, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
   def index
     @q = Cook.ransack(params[:q])
-    @cooks = @q.result(distinct: true).includes(:labels)
+    @cooks = @q.result(distinct: true).includes(:labels).order("created_at desc")
   end
 
   def new
@@ -44,7 +45,10 @@ class CooksController < ApplicationController
 
   def destroy
     @cook.destroy
-    redirect_to user_path(cook.user), notice: "レシピを削除しました。"
+    if current_user.admin
+      CookMailer.cook_mail(@cook).deliver_now
+    end
+    redirect_to user_path(@cook.user), notice: "レシピを削除しました。"
   end
 
   private

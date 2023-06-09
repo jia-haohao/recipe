@@ -1,4 +1,5 @@
 class MessagesController < ApplicationController
+  load_and_authorize_resource
   before_action do 
     @conversation = Conversation.find(params[:conversation_id])
   end

@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
+  load_and_authorize_resource
   before_action :set_user, only: [:show, :edit, :update, :destroy, :page]
-  before_action :authenticate_user!, except: [:new]
+  # before_action :authenticate_user!, except: [:new]
   def index
     @users = User.all
   end

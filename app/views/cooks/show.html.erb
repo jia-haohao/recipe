@@ -38,7 +38,7 @@
                   <td><%= simple_format @cook.describe %></td>
                 </tr>
               </table>
-              <% if @cook.user.id == current_user.id %>
+              <% if @cook.user == current_user || current_user.admin %>
                 <%= link_to "編集", edit_cook_path(@cook), class: "button is-success" %>
                 <%= link_to "削除", cook_path(@cook), method: :delete,
                     data: { confirm: "本当に削除していいですか" }, class: "button is-danger" %>
