@@ -10,9 +10,9 @@ Rails.application.routes.draw do
     resources :comments
     resource :favorites, only: [:create, :destroy]
   end
-  get 'favorites/index'
+  get 'favorites/index', as: :favorites
 
-  resource :relationships, only: [:create, :destroy] 
+  resources :relationships, only: [:create, :destroy] 
   resources :conversations, only: [:index, :create]  do 
     resources :messages, only: [:index, :create]  
   end

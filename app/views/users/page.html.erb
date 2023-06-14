@@ -31,7 +31,7 @@
                   </td>
                   <td class="title"><%= link_to following.name, user_path(following.id) %></td>
                   <% if @user == current_user %>
-                    <td><%= link_to 'フォロー外す', relationships_path(current_user.active_relationships.where(followed: following.id).first), method: :delete, class: "button is-danger is-small" %></td>
+                    <td><%= link_to 'フォロー外す', relationship_path(current_user.active_relationships.where(followed: following.id).first), method: :delete, class: "button is-danger is-small" %></td>
                     <td><%= link_to 'メッセージ', conversations_path(sender_id: current_user.id, recipient_id: following.id), method: :post, class: "button is-success is-small" %></td>
                   <% end %>
                 </tr>

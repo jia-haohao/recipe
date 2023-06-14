@@ -41,8 +41,9 @@ class UsersController < ApplicationController
 
   def destroy
     # params[:id].followed
-    @user.destroy
-    redirect_to users_path, notice: "削除しました!"
+    if @user.destroy
+      redirect_to users_path, notice: "削除しました!"
+    end
   end
 
   def page 
