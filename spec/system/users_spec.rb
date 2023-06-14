@@ -47,13 +47,13 @@ RSpec.describe "ユーザー機能", type: :system do
         # page.accept_alert do
         click_link '削除'
         # end
-        expect(page).to have_content 'ログイン'
+        expect(page).to have_content 'ユーザーを削除しました!'
       end
     end
     context 'ログアウトした場合' do
       it 'ログアウトできる' do
         click_on 'ログアウト'
-        expect(page).to have_content 'ログインもしくはアカウント登録してください。'
+        expect(page).to have_content 'ログアウトしました'
         expect(page).not_to have_content 'マイページ'
       end
     end

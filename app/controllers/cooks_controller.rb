@@ -1,7 +1,7 @@
 class CooksController < ApplicationController
   load_and_authorize_resource
   before_action :set_cook, only: [:show, :edit, :update, :destroy]
-  # before_action :authenticate_user!
+  
   def index
     @q = Cook.ransack(params[:q])
     @cooks = @q.result(distinct: true).includes(:labels).order("created_at desc")

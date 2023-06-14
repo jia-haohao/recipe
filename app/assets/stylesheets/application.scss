@@ -27,13 +27,21 @@ body {
 }
 
 .header {
-  height: 70px;
+  height: 80px;
   width: 100%;
   font-family: Georgia;
   background-color: cornflowerblue;
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.logo_image {
+  width: 200px;
+  height: 200px;
+  float: left;
+  margin: 0;
+  padding-top: 40px;
 }
 
 .media-content p {

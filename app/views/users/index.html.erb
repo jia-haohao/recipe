@@ -24,7 +24,7 @@
                   <% end %>
                 </div>
                 <div class="media-content">
-                  <%= render 'follow_form', user: user %>
+                  <%= render 'follow_form', user: user if current_user%>
                 </div>
               </div>
               <div class="content">

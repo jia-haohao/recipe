@@ -14,11 +14,9 @@
   <body>
     <header class="header">
       <div class="navbar-start">
-        <h2 class="title is-3" style="font-family: cursive;">
           <%=link_to root_path, class: "navar-item" do %>
-            recipegram
+            <%= image_tag('logo.png',class: "logo_image") %>
           <% end %>
-        </h2> 
       </div>
 
       <div class="navbar-end">
@@ -38,7 +36,7 @@
         <%= link_to "新規登録", new_user_registration_path, class: "nav-link" %>
       <% end %>
     </header>
-    <%= image_tag("shakehand.png", style: "height: 12rem; width: 100%") %>
+    <%= image_tag("heart.jpg", style: "height: 12rem; width: 100%") %>
     <% if flash[:notice] %>
       <div class="notification is-info">
         <p class="notice"><%= notice %></p>
