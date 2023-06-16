@@ -22,7 +22,7 @@ class ProfileImageUploader < CarrierWave::Uploader::Base
   # end
 
   def default_url(*args)
-    "/assets/no-image.png"  # 默认的图片路径
+    "no-image.png"  # 默认的图片路径
   end
 
   # Process files as they are uploaded:
