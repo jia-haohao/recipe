@@ -18,7 +18,7 @@
         <div class="columns is-centered">
           <div class="column is-4">
             <figure class="image is-180x180"  style="margin-left: auto; margin-right: auto;">
-              <%= image_tag(@user.profile_image.url, class: "profile_image is-rounded") if  @user.profile_image.url  %>
+              <%= image_tag default_img(@user.profile_image.url, class: "profile_image is-rounded") if  @user.profile_image.url  %>
             </figure>
           </div>
           <div class="column is-8">
@@ -71,7 +71,7 @@
             <div class="card-image">
               <figure class="image is-4by3">
                 <%= link_to cook_path(cook) do %>
-                  <%= image_tag(cook.image.url) if cook.image.url %>
+                  <%= image_tag cook.image.url if cook.image.url %>
                 <% end %>
               </figure>
             </div>

@@ -33,7 +33,7 @@
           </div>
 
           <div class="field">
-            <%= image_tag(@cook.image.url, style: "width: 300px; height: 300px;") if @cook.image.url %>
+            <%= image_tag default_img(@cook.image.url, style: "width: 300px; height: 300px;") if @cook.image.url %>
             <%= f.label :image, "写真", class: "label" %>
             <%= f.file_field :image, class: "current-image" %>
             <%= f.hidden_field :image_cache %>

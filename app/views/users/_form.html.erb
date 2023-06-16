@@ -30,7 +30,7 @@
             </div>
 
             <div class="field">
-              <%= image_tag(@user.profile_image.url, class: "profile_image") if  @user.profile_image.url %>
+              <%= image_tag default_img(@user.profile_image.url, class: "profile_image") if  @user.profile_image.url %>
                 <%= f.label :profile_image, "プロフィール画像", class: "label" %>
                 <%= f.file_field :profile_image, class: "current-profile-image" %>
                 <%#= f.hidden_field :image_cache %>
