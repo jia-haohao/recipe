@@ -24,5 +24,9 @@
   <br>
 
   <%= link_to '新規ラベル', new_label_path %>  |
-  <%= link_to 'レシピの編集画面へ', edit_cook_path(@cook) %>
+  <% if session[:cook_id] %>
+    <%= link_to 'レシピの編集画面へ', edit_cook_path(session[:cook_id]) %>
+  <% else %>
+    <%= link_to 'レシピの投稿画面へ', new_cook_path %>
+  <% end %>
 </div>

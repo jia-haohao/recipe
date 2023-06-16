@@ -4,11 +4,12 @@
 
 - Ruby3.0.1
 - Rails6.1.6
-
+.
 ## 就業 Term の技術
 
 - devise
 - rails_admin
+- cancancan
 - Ajax を使ったコメント機能
 - お気に入り機能
 

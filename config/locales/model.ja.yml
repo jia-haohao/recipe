@@ -2,15 +2,21 @@ ja:
   ja:
   activerecord:
     models:
-      recipe: レシピ
+      cook: レシピ
       user: ユーザー
       favorite: お気に入り
-      taste: 味
+      label: 特色
+      labelling: 特色関連
+      message: メッセージ
+      conversation: メッセージ関連
+      comment: コメント
+      relationship: フォロー連結
     attributes:
-      recipe:
+      cook:
         title: タイトル
-        describe: 記述
+        describe: 作り方
         image: 画像
+        user: ユーザー
       user:
         name: 名前
         profile: プロフィール
@@ -23,7 +29,27 @@ ja:
         Log in: ログイン
         sign up: サインアップ
         admin: 管理者
-      taste:
+      label:
         name: 特色
+      labelling:
+        label: 特色
+        cook: レシピ
       comment:
+        cook: レシピ
         content: 内容
+      relationship:
+        follower: フォロー
+        followed: フォロワー
+        created at: 作成日時
+        updated at: 更新日時
+      conversation:
+        sender: 発信者
+        recipient: 受信者
+      message:
+        body: 内容
+        conversation: メッセージ関連
+        user: ユーザー
+        read: 未/既読
+      favorite:
+        user: ユーザー
+        cook: レシピ

@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_cook, only: [:create, :edit, :update]
+  
   def create 
     @comment = @cook.comments.build(comment_params)
     @comment.user_id = current_user.id

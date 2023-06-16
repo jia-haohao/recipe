@@ -1,6 +1,6 @@
 <%= form_with(model: @user, local: true) do |f| %>
   <% if @user.errors.any? %>
-    <div id="error_explanation">
+    <div class="notification is-danger">
       <h2><%= @user.errors.count %>件のエラーがあります. </h2>
       <ul>
         <% @user.errors.full_messages.each do |msg| %>
@@ -30,9 +30,9 @@
             </div>
 
             <div class="field">
-              <%= image_tag(@user.profile_image.url, class: "profile_image") if  @user.profile_image.url %>
+              <%= image_tag default_img(@user.profile_image.url), class: "profile_image" if  @user.profile_image.url %>
                 <%= f.label :profile_image, "プロフィール画像", class: "label" %>
-                <%= f.file_field :profile_image, class: "current-profile-image" %>
+                <%= f.file_field :profile_image, class: "profile_image" %>
                 <%#= f.hidden_field :image_cache %>
             </div>
 

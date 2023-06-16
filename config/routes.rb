@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root to: "top#index"
   devise_for :users
   resources :users do
@@ -9,11 +10,11 @@ Rails.application.routes.draw do
     resources :comments
     resource :favorites, only: [:create, :destroy]
   end
-  get 'favorites/index'
+  get 'favorites/index', as: :favorites
 
   resources :relationships, only: [:create, :destroy] 
-  resources :conversations do 
-    resources :messages 
+  resources :conversations, only: [:index, :create]  do 
+    resources :messages, only: [:index, :create]  
   end
   resources :labels
   

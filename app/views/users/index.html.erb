@@ -10,7 +10,7 @@
               <div class="card-image">
                 <figure class="image">
                   <%= link_to user_path(user) do %>
-                    <%= image_tag(user.profile_image.url, class: "profile_image") if user.profile_image.url %>
+                    <%= image_tag default_img(user.profile_image.url), class: "profile_image" if user.profile_image.url %>
                   <% end %>
                 </figure>
               </div>
@@ -24,7 +24,7 @@
                   <% end %>
                 </div>
                 <div class="media-content">
-                  <%= render 'follow_form', user: user %>
+                  <%= render 'follow_form', user: user if current_user%>
                 </div>
               </div>
               <div class="content">

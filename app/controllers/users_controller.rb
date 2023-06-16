@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
+  load_and_authorize_resource
   before_action :set_user, only: [:show, :edit, :update, :destroy, :page]
-  before_action :authenticate_user!, except: [:new]
+
   def index
     @users = User.all
   end
@@ -40,13 +41,15 @@ class UsersController < ApplicationController
 
   def destroy
     # params[:id].followed
-    @user.destroy
-    redirect_to users_path, notice: "削除しました!"
+    if @user.destroy!
+      redirect_to users_path, notice: "ユーザーを削除しました!"
+    end
   end
 
   def page 
     @followings = @user.followings
     @followers = @user.followers
+    # @conversation = Conversation.all
   end
 
   private

@@ -29,12 +29,12 @@
               <div class="media-content">
                 <%= favorite.cook.title %>
                 <% if current_user.already_favorited?(favorite.cook) %>
-                  <%= link_to cook_favorites_path(favorite.cook), method: :delete do %>
+                  <%= link_to cook_favorites_path(favorite.cook), method: :delete, id: 'heart' do %>
                     <i class="fas fa-heart"></i>
                   <% end %>
                   <%= favorite.cook.favorites.count %>
                 <% else %>
-                  <%= link_to cook_favorites_path(favorite.cook), method: :post do %>
+                  <%= link_to cook_favorites_path(favorite.cook), method: :post, id: 'heart' do %>
                     <i class="far fa-heart"></i>
                   <% end %>
                   <%= favorite.cook.favorites.count %>

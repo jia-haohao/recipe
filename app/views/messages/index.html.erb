@@ -6,41 +6,37 @@
 <table class="container">
   <thead>
     <tr>
+      <th style="text-align: left; font-size: 50px;"><%= current_user.name %></th>
       <% if @conversation.recipient_id == current_user.id %>
-        <th style="text-align: left; font-size: 50px;"><%= @conversation.recipient.name %></th>
+        <th style="text-align: right; font-size: 50px;"><%= @conversation.sender.name %></th>
       <% else %>
-        <th style="text-align: left; font-size: 50px;"><%= current_user.name %></th>
-      <% end %>
-      
-      <% if @conversation.recipient_id != @conversation.sender_id %>
-        <% if @conversation.sender_id == current_user.id %>
-          <th style="text-align: right; font-size: 50px;"><%= @conversation.sender.name %></th>
-        <% else %>
-          <th style="text-align: right; font-size: 50px;"><%= @conversation.recipient.name %></th>
-        <% end %>
+        <th style="text-align: right; font-size: 50px;"><%= @conversation.recipient.name %></th>
       <% end %>
     </tr>
   </thead>
-  <% @messages.each do |message| %>
-    <% if message.body.present? %>
-      <% if message.user_id == current_user.id %>
-        <tbody>
-          <tr>
-            <th>
-              <p style="text-align: left;"><%= message.body %></p>
-              <p style="text-align: left;"><%= message.message_time %>　<%= message.read ? '既読' : '未読' %></p>
-            </th>
-            <th></th>
-          </tr>
-      <% else %>
-          <tr>
-            <th></th>
-            <th>
-              <p style="text-align: right;"><%= message.body %></p>
-              <p style="text-align: right;"><%= message.message_time %>　<%= message.read ? '既読' : '未読' %></p>
-            </th>
-          </tr>
-        </tbody>
+
+  <% if @messages.present? %>
+    <% @messages.each do |message| %>
+      <% if message.body.present? %>
+        <% if message.user_id == current_user.id %>
+          <tbody>
+            <tr>
+              <th>
+                <p style="text-align: left;"><%= message.body %></p>
+                <p style="text-align: left;"><%= message.message_time %>　<%= message.read ? '既読' : '未読' %></p>
+              </th>
+              <th></th>
+            </tr>
+        <% else %>
+            <tr>
+              <th></th>
+              <th>
+                <p style="text-align: right;"><%= message.body %></p>
+                <p style="text-align: right;"><%= message.message_time %>　<%= message.read ? '既読' : '未読' %></p>
+              </th>
+            </tr>
+          </tbody>
+        <% end %>
       <% end %>
     <% end %>
   <% end %>
@@ -48,8 +44,8 @@
 
 <%= form_with(model: [@conversation, @message]) do |f| %>
   <% if @message.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@message.errors.count, "error") %> prohibited this comment from being saved:</h2>
+    <div class="notification is-danger">
+      <h2><%= @message.errors.count %> 件のエラーがあります.</h2>
       <ul>
         <% @message.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -66,6 +62,6 @@
       <%= f.submit "メッセージを送る" %>
       <br>
       <%= link_to '戻る', user_path(current_user), class: 'button is-secondary is-small' %>
-      <%#= link_to '情報へ', page_user_path(@user), class: 'button is-secondary is-small' %>
+      <%= link_to '情報へ', page_user_path(current_user), class: 'button is-secondary is-small' %>
     </div>
 <% end %>
