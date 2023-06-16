@@ -26,7 +26,7 @@
                 <tr>
                   <td>
                     <figure class="image is-128x128"  style="margin-left: auto; margin-right: auto;">
-                      <%= image_tag default_img(following.profile_image.url, class: "profile_image is-rounded") if  following.profile_image.url  %>
+                      <%= image_tag default_img(following.profile_image.url), class: "profile_image is-rounded" if  following.profile_image.url  %>
                     </figure>
                   </td>
                   <td class="title"><%= link_to following.name, user_path(following.id) %></td>
@@ -61,7 +61,7 @@
                   <tr>
                     <td>
                       <figure class="image is-128x128"  style="margin-left: auto; margin-right: auto;">
-                        <%= image_tag default_img(follower.profile_image.url, class: "profile_image is-rounded") if  follower.profile_image.url  %>
+                        <%= image_tag default_img(follower.profile_image.url), class: "profile_image is-rounded" if  follower.profile_image.url  %>
                       </figure>
                     </td>
                     <td class="title"><%= link_to follower.name, user_path(follower.id) %></td>

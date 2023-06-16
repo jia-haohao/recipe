@@ -16,7 +16,7 @@
             <div class="card-image">
               <figure class="image is-4by3">
                 <%= link_to cook_path(cook) do %>
-                  <%= image_tag default_img(cook.image.url) if cook.image.url %>
+                  <%= image_tag(cook.image.url) if cook.image.url %>
                 <% end %>
               </figure>
             </div>
@@ -25,7 +25,7 @@
                 <div class="media-left">
                   <figure class="image is-48x48">
                     <%= link_to user_path(cook.user) do %>
-                      <%= image_tag (cook.user.profile_image.url, class: "profile_image") if cook.user.profile_image.url %>
+                      <%= image_tag default_img(cook.user.profile_image.url), class: "profile_image" if cook.user.profile_image.url %>
                     <% end %>
                   </figure>
                 </div>
