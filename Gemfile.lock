@@ -172,6 +172,7 @@ GEM
     method_source (1.0.0)
     mini_magick (4.12.0)
     mini_mime (1.1.2)
+    mini_portile2 (2.8.2)
     minitest (5.18.0)
     msgpack (1.7.1)
     nested_form (0.3.2)
@@ -185,6 +186,9 @@ GEM
     net-smtp (0.3.3)
       net-protocol
     nio4r (2.5.9)
+    nokogiri (1.15.2)
+      mini_portile2 (~> 2.8.2)
+      racc (~> 1.4)
     nokogiri (1.15.2-arm64-darwin)
       racc (~> 1.4)
     nokogiri (1.15.2-x86_64-linux)
@@ -354,6 +358,7 @@ GEM
 
 PLATFORMS
   arm64-darwin-22
+  ruby
   x86_64-linux
 
 DEPENDENCIES
@@ -376,7 +381,7 @@ DEPENDENCIES
   net-imap
   net-pop
   net-smtp
-  pg (~> 1.1)
+  pg (~> 1.2, >= 1.2.3)
   pry-rails
   puma (~> 5.0)
   rails (~> 6.1.6)
