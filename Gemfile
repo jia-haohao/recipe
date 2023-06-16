@@ -51,3 +51,6 @@ gem 'cancancan'
 gem 'rails_admin'
 gem 'dotenv-rails'
 gem 'rubocop', require: false
+gem 'net-smtp'
+gem 'net-imap'
+gem 'net-pop'
