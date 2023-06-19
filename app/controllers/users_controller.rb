@@ -43,6 +43,8 @@ class UsersController < ApplicationController
     # params[:id].followed
     if @user.destroy!
       redirect_to users_path, notice: "ユーザーを削除しました!"
+    else
+      redirect_to users_path, alert: "ユーザーの削除に失敗しました。"
     end
   end
 
