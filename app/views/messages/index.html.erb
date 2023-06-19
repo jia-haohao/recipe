@@ -55,7 +55,7 @@
   <% end %>
 
     <div class="center">
-      <%= f.text_area :body, class: "form-control" %>
+      <%= f.text_area :body, class: "form-control", placeholder: "例: 初めまして" %>
     </div>
     <%= f.text_field :user_id, value: current_user.id, type: "hidden" %>
     <div class="center">

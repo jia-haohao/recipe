@@ -16,7 +16,7 @@
         <div class="column is-6">
           <div class="field">
             <%= f.label :title, "レシピ名", class: "label" %>
-            <%= f.text_field :title, class: "input" %>
+            <%= f.text_field :title, class: "input", placeholder: "例: ステーキ" %>
           </div>
 
           <div class="label_field">
@@ -29,11 +29,11 @@
 
           <div class="field">
             <%= f.label :describe, "作り方", class: "label" %>
-            <%= f.text_area :describe, class: "textarea" %>
+            <%= f.text_area :describe, class: "textarea", placeholder: "例: 材料:牛サーロイン肉[ステーキ用]　250g" %>
           </div>
 
           <div class="field">
-            <%= image_tag(@cook.image.url, style: "width: 300px; height: 300px;") if @cook.image.url %>
+            <%= image_tag default1_img(@cook.image.url), style: "width: 300px; height: 300px;" if @cook.image.url %>
             <%= f.label :image, "写真", class: "label" %>
             <%= f.file_field :image, class: "current-image" %>
             <%= f.hidden_field :image_cache %>

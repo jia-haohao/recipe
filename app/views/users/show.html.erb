@@ -24,8 +24,8 @@
           <div class="column is-8">
             <table class="table is-fullwidth">
               <tr>
-                <td class="is-size-4">
-                  <strong><%= @user.name %></strong>
+                <td class="is-size-4" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                  <p><strong><%= @user.name %></strong></p>
                 </td>
                 <td>
                   <%= render 'follow_form', user: @user %>
@@ -71,7 +71,7 @@
             <div class="card-image">
               <figure class="image is-4by3">
                 <%= link_to cook_path(cook) do %>
-                  <%= image_tag cook.image.url if cook.image.url %>
+                  <%= image_tag default1_img(cook.image.url) if cook.image.url %>
                 <% end %>
               </figure>
             </div>

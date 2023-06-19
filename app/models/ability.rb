@@ -16,6 +16,11 @@ class Ability
     #     conversation = message.conversation
     #     conversation.sender_id == user.id || conversation.recipient_id == user.id
     #   end
+    # elsif user == User.guest
+    #   can :read, :all
+    #   cannot :create, Cook # 禁止创建 Cook 资源
+    #   cannot :update, Cook # 禁止更新 Cook 资源
+    #   cannot :destroy, Cook 
     else
       can :manage, :all
       cannot :access, :rails_admin
