@@ -10,7 +10,7 @@
         <div class="field">
           <%= f.label :name, class: "label" %>
           <p class="control has-icons-left">
-            <%= f.text_field :name, autofocus: true, autocomplete: "name", :placeholder => "username", class: "input" %>
+            <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "例: 山田太郎", class: "input" %>
             <span class="icon is-small is-left">
               <i class="fas fa-user"></i>
             </span>
@@ -20,7 +20,7 @@
         <div class="field">
           <%= f.label :email, class: "label" %>
           <p class="control has-icons-left">
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", :placeholder => "email", class: "input" %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "例: yamada@example.com", class: "input" %>
             <span class="icon is-small is-left">
               <i class="fas fa-envelope"></i>
             </span>
@@ -33,7 +33,7 @@
           <em><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></em>
           <% end %>
           <p class="control has-icons-left">
-            <%= f.password_field :password, autocomplete: "new-password", :placeholder => "password confirmation", class: "input" %>
+            <%= f.password_field :password, autocomplete: "new-password", placeholder: "例: password", class: "input" %>
             <span class="icon is-small is-left">
               <i class="fas fa-lock"></i>
             </span>
@@ -43,7 +43,7 @@
         <div class="field">
           <%= f.label :password_confirmation, class: "label" %>
           <p class="control has-icons-left">
-            <%= f.password_field :password_confirmation, autocomplete: "new-password", :placeholder => "password confirmation", class: "input" %>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "例: password", class: "input" %>
             <span class="icon is-small is-left">
               <i class="fas fa-lock"></i>
             </span>

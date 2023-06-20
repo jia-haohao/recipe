@@ -4,7 +4,7 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    if user.try(:admin?)
+    if user.try(:admin?) 
       can :access, :rails_admin
       can :manage, :all
       # can [:create, :destroy], Favorite, cook_id: @cook.id
@@ -25,6 +25,7 @@ class Ability
       can :manage, :all
       cannot :access, :rails_admin
     end
+
     # Define abilities for the user here. For example:
     #
     #   return unless user.present?
