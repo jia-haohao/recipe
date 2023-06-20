@@ -18,7 +18,7 @@
             <div class="card-content">
               <div class="media">
                 <div class="media-content">
-                  <div class="title"><%= link_to user.name, user_path(user) %></div>
+                  <p><%= link_to user.name, user_path(user) %></p>
                   <% if user_signed_in? && (current_user.followings.include?(@user) || current_user.followers.include?(@user)) %>
                     <%= link_to 'メッセージ', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: :post %>
                   <% end %>

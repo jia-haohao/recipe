@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to user_path(@user.id)
+      redirect_to user_path(@user.id), notice: " #{@user.name}さんを登録しました! "
     else
       render :new
     end
@@ -33,25 +33,23 @@ class UsersController < ApplicationController
 
   def update 
     if @user.update(user_params)
-      redirect_to user_path(@user), notice: "ユーザー情報を更新しました。"
+      redirect_to user_path(@user), notice: "#{@user.name}さんを更新しました。"
     else 
       render :edit
     end
   end
 
   def destroy
-    # params[:id].followed
-    if @user.destroy!
-      redirect_to users_path, notice: "ユーザーを削除しました!"
+    if @user.destroy
+      redirect_to users_path, notice: "#{@user.name}さんを削除しました!"
     else
-      redirect_to users_path, alert: "ユーザーの削除に失敗しました。"
+      redirect_to users_path, alert: "最低一人の管理者か、#{@user.name}さんを削除できません"
     end
   end
 
   def page 
     @followings = @user.followings
     @followers = @user.followers
-    # @conversation = Conversation.all
   end
 
   private
