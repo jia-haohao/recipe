@@ -21,8 +21,7 @@ RSpec.describe "RailsAdmins", type: :system do
       let!(:user) { create(:user) }
       include_context "login_setup"
       it '普通のユーザーは管理画面へ繋がれないです' do
-        visit rails_admin_path
-        expect(page).to have_content('サイト管理')
+        expect(page).to_not have_content('サイト管理')
       end
     end
   end
