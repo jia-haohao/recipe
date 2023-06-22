@@ -28,6 +28,8 @@ group :development do
   # gem 'rack-mini-profiler', '~> 2.0'
   gem 'listen', '~> 3.3'
   gem 'spring'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 group :test do
@@ -44,8 +46,6 @@ gem 'rails-i18n', '~> 6.0'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'ransack'
-gem 'better_errors'
-gem 'binding_of_caller'
 gem 'pry-rails'
 gem 'cancancan'
 gem 'rails_admin'
@@ -54,3 +54,4 @@ gem 'rubocop', require: false
 gem 'net-smtp'
 gem 'net-imap'
 gem 'net-pop'
+gem 'faker'

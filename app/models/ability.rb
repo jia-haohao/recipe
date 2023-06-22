@@ -7,20 +7,6 @@ class Ability
     if user.try(:admin?) 
       can :access, :rails_admin
       can :manage, :all
-      # can [:create, :destroy], Favorite, cook_id: @cook.id
-      # can [:create, :destroy], Relationship, follower_id: user.id
-    #   can :create, Conversation, sender_id: user.id, recipient_id: user.id
-    #   can :manage, Conversation, sender_id: user.id
-    #   can :manage, Conversation, recipient_id: user.id
-    #   can :create, Message do |message|
-    #     conversation = message.conversation
-    #     conversation.sender_id == user.id || conversation.recipient_id == user.id
-    #   end
-    # elsif user == User.guest
-    #   can :read, :all
-    #   cannot :create, Cook # 禁止创建 Cook 资源
-    #   cannot :update, Cook # 禁止更新 Cook 资源
-    #   cannot :destroy, Cook 
     else
       can :manage, :all
       cannot :access, :rails_admin
