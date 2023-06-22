@@ -4,7 +4,8 @@
 
 - Ruby3.0.1
 - Rails6.1.6
-.
+  .
+
 ## 就業 Term の技術
 
 - devise
